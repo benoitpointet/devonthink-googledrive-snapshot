@@ -13,6 +13,9 @@ Google Suite is the environment I use at work, DT is my second brain. Sometimes 
 ## Usage
 It currently allows to download **PDF snapshots** of **Google Docs** and **Google Presentations**.
 
+### Login from within Devonthink
+Login to Google Drive from within Devonthink before you intend to use it. For this simply open a Devonthink bookmark of some Google Drive document and login. Now you are ready to use it.  
+
 ### In a smart rule
 You can trigger it from a smart rule, just don't forget to place it in the "Smart Rules" folder of the scripts folder (which you can open from the scripts menu).
 
