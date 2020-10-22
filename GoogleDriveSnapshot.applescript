@@ -33,37 +33,40 @@ on snapshotGDoc(theBookmark)
 		-- prepare some vars
 		set bookmarkURL to URL of theBookmark
 		set gDocID to regex search once bookmarkURL search pattern "[^/]{32,52}"
-
+		
 		-- deal with the various types of docs
 		if bookmarkURL contains "document" then
 			set exportURL to "https://docs.google.com/document/u/0/export?format=pdf&id=" & gDocID
 		end if
 		if bookmarkURL contains "presentation" then
-			set exportURL to "https://docs.google.com/presentation/d/1ok2wAuSjzp2U9LcgA5PASbz21CAJphoCcy2YCNM3X3k/export/pdf?id=" & gDocID
+			set exportURL to "https://docs.google.com/presentation/d/" & gDocID & "/export/pdf?id=" & gDocID
 		end if
-
-
+		if bookmarkURL contains "spreadsheet" then
+			set exportURL to "https://docs.google.com/spreadsheets/d/" & gDocID & "/pdf?id=" & gDocID
+		end if
+		
+		
 		set exportName to name of theBookmark & " (PDF Snapshot)"
 		set exportGroup to first parent of theBookmark
 		set referenceURL to get reference URL of theBookmark
-
-
+		
+		
 		-- download new snapshot
 		set exportData to download URL exportURL
-
-
+		
+		
 		-- cleanup old snapshots
 		set oldSnapshots to search "kind:pdf name:~snapshot url==" & referenceURL
 		repeat with oldSnapshot in (oldSnapshots as list)
 			move record oldSnapshot to trash group of current database
 		end repeat
-
-
+		
+		
 		-- save new snapshot
 		set theExport to create record with {name:exportName, type:PDF document, MIME type:"application/PDF", URL:referenceURL} in exportGroup
 		set data of theExport to exportData
-
-
+		
+		
 		-- reproduce replicates and tags of bookmark
 		repeat with parentGroup in parents of theBookmark
 			if id of parentGroup = id of exportGroup then

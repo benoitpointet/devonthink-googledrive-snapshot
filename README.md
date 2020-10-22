@@ -11,7 +11,7 @@ Google Suite is the environment I use at work, DT is my second brain. Sometimes 
 * This script requires the [RegexAndStuffLib (min v1.0.6)](https://latenightsw.com/support/freeware/) script to run.
 
 ## Usage
-It currently allows to download **PDF snapshots** of **Google Docs** and **Google Presentations**.
+It currently allows to download **PDF snapshots** of **Google Docs, Spreadsheets and Presentations**.
 
 ### Login from within Devonthink
 Login to Google Drive from within Devonthink before you intend to use it. For this simply open a Devonthink bookmark of some Google Drive document and login. Now you are ready to use it.  
