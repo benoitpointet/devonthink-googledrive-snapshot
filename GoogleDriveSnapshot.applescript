@@ -42,7 +42,7 @@ on snapshotGDoc(theBookmark)
 			set exportURL to "https://docs.google.com/presentation/d/" & gDocID & "/export/pdf?id=" & gDocID
 		end if
 		if bookmarkURL contains "spreadsheet" then
-			set exportURL to "https://docs.google.com/spreadsheets/d/" & gDocID & "/pdf?id=" & gDocID
+			set exportURL to "https://docs.google.com/spreadsheets/d/" & gDocID & "/export?format=pdf"
 		end if
 		
 		
